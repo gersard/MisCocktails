@@ -1,2 +1,2 @@
 # MisCocktails
-Proyecto simple que utiliza Clean Architecture
+Proyecto simple que utiliza Clean Architecture + MVVM
