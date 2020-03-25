@@ -1,2 +1,5 @@
 # MisCocktails
-Proyecto simple que utiliza Clean Architecture + MVVM
+Proyecto simple que utiliza:<br>
+<br>Clean Architecture
+<br>MVVM
+<br>Firestore
