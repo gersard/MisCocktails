@@ -20,5 +20,6 @@ class ListaCocktailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        ListaCocktailsRepositoryImpl().getCocktails()
     }
 }
