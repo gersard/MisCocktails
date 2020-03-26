@@ -1,4 +1,4 @@
-package cl.gerardomascayano.miscocktails.ui.lista
+package cl.gerardomascayano.miscocktails.ui.lista.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
