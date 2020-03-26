@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#B8B8B8</color>
+    <color name="colorPrimaryDark">#5E5E5E</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+<!--    LISTA COCKTAILS-->
+    <color name="bgEtiquetaListCocktail">#8F000000</color>
+    <color name="fgImageListCocktails">#29000000</color>
+<!--    ESTÁTICOS-->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+</resources>
