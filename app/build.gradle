@@ -51,9 +51,11 @@ dependencies {
     def appCompat = '1.1.0'
     def material = '1.1.0'
     def constraintLayout = '1.1.3'
+    def cardView = '1.0.0'
     implementation "com.google.android.material:material:$material"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
     implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.cardview:cardview:$cardView"
 
     // COROUTINES
     def coroutines = '1.3.3'
