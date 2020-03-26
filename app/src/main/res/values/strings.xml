@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MisCocktails</string>
     <string name="splash_message">SPLASH</string>
+    <string name="title_cocktails">Cocktails</string>
 </resources>
