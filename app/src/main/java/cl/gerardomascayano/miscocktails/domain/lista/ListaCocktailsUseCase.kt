@@ -1,7 +1,9 @@
 package cl.gerardomascayano.miscocktails.domain.lista
 
+import cl.gerardomascayano.miscocktails.data.model.Cocktail
+
 interface ListaCocktailsUseCase {
 
-    fun getListCocktails()
+    suspend fun getListCocktails(): MutableList<Cocktail>?
 
 }
