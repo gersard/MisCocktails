@@ -27,6 +27,7 @@ class ListaCocktailsAdapter(private val listCocktails: List<Cocktail>) : Recycle
             Glide
                 .with(viewBinding.ivCocktailImage)
                 .load(cocktail.imagen)
+                .centerCrop()
                 .into(viewBinding.ivCocktailImage)
         }
     }

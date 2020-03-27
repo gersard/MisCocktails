@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import cl.gerardomascayano.miscocktails.data.lista.ListaCocktailsRepositoryImpl
+import cl.gerardomascayano.miscocktails.data.model.Cocktail
 import cl.gerardomascayano.miscocktails.data.model.ListaCocktailsEvent
 import cl.gerardomascayano.miscocktails.databinding.ActivityListaCocktailsBinding
 import cl.gerardomascayano.miscocktails.domain.lista.ListaCocktailsUseCaseImpl
+import cl.gerardomascayano.miscocktails.ui.lista.adapter.ListaCocktailsAdapter
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModel
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModelFactory
 import cl.gerardomascayano.miscocktails.util.extension.exhaustive
@@ -34,12 +37,22 @@ class ListaCocktailsActivity : AppCompatActivity() {
         viewBind = ActivityListaCocktailsBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
         listCocktailsViewModel.getCocktails()
+        observeListacocktailsEvent()
+    }
+
+    private fun observeListacocktailsEvent() {
         listCocktailsViewModel.listaCocktailsEvent.observe(this, Observer { event ->
             when (event) {
                 is ListaCocktailsEvent.Loading -> if (event.isLoading) viewBind.progressBar.visible() else viewBind.progressBar.gone()
-                is ListaCocktailsEvent.Sucess -> viewBind.rvListaCocktails.visible()
-                is ListaCocktailsEvent.Failure -> Toast.makeText(this,event.message,Toast.LENGTH_LONG).show()
+                is ListaCocktailsEvent.Sucess -> configureListaCocktails(event.listCocktails)
+                is ListaCocktailsEvent.Failure -> Toast.makeText(this, event.message, Toast.LENGTH_LONG).show()
             }.exhaustive
         })
+    }
+
+    private fun configureListaCocktails(listCocktails: List<Cocktail>) {
+        viewBind.rvListaCocktails.setHasFixedSize(true)
+        viewBind.rvListaCocktails.layoutManager = LinearLayoutManager(this)
+        viewBind.rvListaCocktails.adapter = ListaCocktailsAdapter(listCocktails)
     }
 }
