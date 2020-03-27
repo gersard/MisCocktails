@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import cl.gerardomascayano.miscocktails.data.lista.ListaCocktailsRepositoryImpl
 import cl.gerardomascayano.miscocktails.data.model.ListaCocktailsEvent
-import cl.gerardomascayano.miscocktails.databinding.ActivityMainBinding
+import cl.gerardomascayano.miscocktails.databinding.ActivityListaCocktailsBinding
 import cl.gerardomascayano.miscocktails.domain.lista.ListaCocktailsUseCaseImpl
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModel
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModelFactory
@@ -17,7 +17,7 @@ import cl.gerardomascayano.miscocktails.util.extension.visible
 
 class ListaCocktailsActivity : AppCompatActivity() {
 
-    private lateinit var viewBind: ActivityMainBinding
+    private lateinit var viewBind: ActivityListaCocktailsBinding
     private val listCocktailsViewModel: ListaCocktailsViewModel by lazy {
         ViewModelProvider(
             this,
@@ -31,7 +31,7 @@ class ListaCocktailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBind = ActivityMainBinding.inflate(layoutInflater)
+        viewBind = ActivityListaCocktailsBinding.inflate(layoutInflater)
         setContentView(viewBind.root)
         listCocktailsViewModel.getCocktails()
         listCocktailsViewModel.listaCocktailsEvent.observe(this, Observer { event ->
@@ -41,7 +41,5 @@ class ListaCocktailsActivity : AppCompatActivity() {
                 is ListaCocktailsEvent.Failure -> Toast.makeText(this,event.message,Toast.LENGTH_LONG).show()
             }.exhaustive
         })
-
-
     }
 }
