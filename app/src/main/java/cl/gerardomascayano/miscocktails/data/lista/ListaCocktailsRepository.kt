@@ -1,6 +1,6 @@
 package cl.gerardomascayano.miscocktails.data.lista
 
-import cl.gerardomascayano.miscocktails.data.model.Cocktail
+import cl.gerardomascayano.miscocktails.model.Cocktail
 
 interface ListaCocktailsRepository {
 

@@ -1,4 +1,4 @@
-package cl.gerardomascayano.miscocktails.data.model
+package cl.gerardomascayano.miscocktails.model
 
 import com.google.gson.annotations.SerializedName
 

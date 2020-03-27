@@ -1,6 +1,6 @@
 package cl.gerardomascayano.miscocktails.data.lista
 
-import cl.gerardomascayano.miscocktails.data.model.Cocktail
+import cl.gerardomascayano.miscocktails.model.Cocktail
 import cl.gerardomascayano.miscocktails.util.FirestoreConstants
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException

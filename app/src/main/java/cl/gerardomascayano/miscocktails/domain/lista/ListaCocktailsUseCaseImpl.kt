@@ -1,7 +1,7 @@
 package cl.gerardomascayano.miscocktails.domain.lista
 
 import cl.gerardomascayano.miscocktails.data.lista.ListaCocktailsRepository
-import cl.gerardomascayano.miscocktails.data.model.Cocktail
+import cl.gerardomascayano.miscocktails.model.Cocktail
 
 class ListaCocktailsUseCaseImpl(private val listCokctailsRepository: ListaCocktailsRepository) : ListaCocktailsUseCase {
 

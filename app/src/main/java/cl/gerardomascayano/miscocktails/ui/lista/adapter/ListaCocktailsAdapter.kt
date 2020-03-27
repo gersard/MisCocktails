@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cl.gerardomascayano.miscocktails.R
-import cl.gerardomascayano.miscocktails.data.model.Cocktail
+import cl.gerardomascayano.miscocktails.model.Cocktail
 import cl.gerardomascayano.miscocktails.databinding.ItemCocktailBinding
 import cl.gerardomascayano.miscocktails.util.extension.inflate
 import com.bumptech.glide.Glide
