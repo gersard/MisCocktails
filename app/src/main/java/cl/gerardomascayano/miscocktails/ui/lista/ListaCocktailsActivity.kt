@@ -1,5 +1,6 @@
 package cl.gerardomascayano.miscocktails.ui.lista
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -11,6 +12,7 @@ import cl.gerardomascayano.miscocktails.model.Cocktail
 import cl.gerardomascayano.miscocktails.model.ListaCocktailsEvent
 import cl.gerardomascayano.miscocktails.databinding.ActivityListaCocktailsBinding
 import cl.gerardomascayano.miscocktails.domain.lista.ListaCocktailsUseCaseImpl
+import cl.gerardomascayano.miscocktails.ui.detalle.DetalleCocktailActivity
 import cl.gerardomascayano.miscocktails.ui.lista.adapter.ListaCocktailsAdapter
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModel
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModelFactory
@@ -18,7 +20,7 @@ import cl.gerardomascayano.miscocktails.util.extension.exhaustive
 import cl.gerardomascayano.miscocktails.util.extension.gone
 import cl.gerardomascayano.miscocktails.util.extension.visible
 
-class ListaCocktailsActivity : AppCompatActivity() {
+class ListaCocktailsActivity : AppCompatActivity(), ListaCocktailsAdapter.OnCocktailItemClickListener {
 
     private lateinit var viewBind: ActivityListaCocktailsBinding
     private val listCocktailsViewModel: ListaCocktailsViewModel by lazy {
@@ -53,6 +55,11 @@ class ListaCocktailsActivity : AppCompatActivity() {
     private fun configureListaCocktails(listCocktails: List<Cocktail>) {
         viewBind.rvListaCocktails.setHasFixedSize(true)
         viewBind.rvListaCocktails.layoutManager = LinearLayoutManager(this)
-        viewBind.rvListaCocktails.adapter = ListaCocktailsAdapter(listCocktails)
+        viewBind.rvListaCocktails.adapter = ListaCocktailsAdapter(listCocktails, this)
+    }
+
+    override fun onCocktailItemClickListener(cocktail: Cocktail) {
+        val intent = Intent(this, DetalleCocktailActivity::class.java)
+        startActivity(intent)
     }
 }

@@ -10,7 +10,8 @@ import cl.gerardomascayano.miscocktails.databinding.ItemCocktailBinding
 import cl.gerardomascayano.miscocktails.util.extension.inflate
 import com.bumptech.glide.Glide
 
-class ListaCocktailsAdapter(private val listCocktails: List<Cocktail>) : RecyclerView.Adapter<ListaCocktailsAdapter.CocktailViewHolder>() {
+class ListaCocktailsAdapter(private val listCocktails: List<Cocktail>, private val cocktailItemListener: OnCocktailItemClickListener) :
+    RecyclerView.Adapter<ListaCocktailsAdapter.CocktailViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CocktailViewHolder = CocktailViewHolder(
         ItemCocktailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,7 +20,11 @@ class ListaCocktailsAdapter(private val listCocktails: List<Cocktail>) : Recycle
     override fun getItemCount(): Int = listCocktails.size
     override fun onBindViewHolder(holder: CocktailViewHolder, position: Int) = holder.bindData(listCocktails[position])
 
-    inner class CocktailViewHolder(private val viewBinding: ItemCocktailBinding) : RecyclerView.ViewHolder(viewBinding.root) {
+    interface OnCocktailItemClickListener {
+        fun onCocktailItemClickListener(cocktail: Cocktail)
+    }
+
+    inner class CocktailViewHolder(private val viewBinding: ItemCocktailBinding) : RecyclerView.ViewHolder(viewBinding.root), View.OnClickListener {
 
         fun bindData(cocktail: Cocktail) {
             viewBinding.tvCocktailName.text = cocktail.nombre
@@ -29,6 +34,9 @@ class ListaCocktailsAdapter(private val listCocktails: List<Cocktail>) : Recycle
                 .load(cocktail.imagen)
                 .centerCrop()
                 .into(viewBinding.ivCocktailImage)
+            viewBinding.root.setOnClickListener(this)
         }
+
+        override fun onClick(v: View?) = cocktailItemListener.onCocktailItemClickListener(listCocktails[adapterPosition])
     }
 }
