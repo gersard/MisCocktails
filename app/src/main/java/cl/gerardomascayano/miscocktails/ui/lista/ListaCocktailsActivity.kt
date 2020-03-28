@@ -19,6 +19,7 @@ import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewMod
 import cl.gerardomascayano.miscocktails.util.extension.exhaustive
 import cl.gerardomascayano.miscocktails.util.extension.gone
 import cl.gerardomascayano.miscocktails.util.extension.visible
+import com.google.gson.Gson
 
 class ListaCocktailsActivity : AppCompatActivity(), ListaCocktailsAdapter.OnCocktailItemClickListener {
 
@@ -60,6 +61,7 @@ class ListaCocktailsActivity : AppCompatActivity(), ListaCocktailsAdapter.OnCock
 
     override fun onCocktailItemClickListener(cocktail: Cocktail) {
         val intent = Intent(this, DetalleCocktailActivity::class.java)
+        intent.putExtra("cocktail", Gson().toJson(cocktail))
         startActivity(intent)
     }
 }
