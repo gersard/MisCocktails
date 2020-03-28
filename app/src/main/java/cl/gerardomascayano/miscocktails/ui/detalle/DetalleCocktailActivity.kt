@@ -25,9 +25,12 @@ class DetalleCocktailActivity : AppCompatActivity() {
     }
 
     private fun configureUi() {
-        Glide.with(this)
-            .load(viewModel.cocktail!!.imagen)
-            .centerCrop()
-            .into(viewBinding.ivCocktailImage)
+        viewModel.cocktail?.run {
+            Glide.with(this@DetalleCocktailActivity)
+                .load(imagen)
+                .centerCrop()
+                .into(viewBinding.ivCocktailImage)
+        }
+
     }
 }
