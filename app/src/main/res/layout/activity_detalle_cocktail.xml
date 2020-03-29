@@ -12,10 +12,15 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/ctl_detalle_cocktail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:collapsedTitleGravity="bottom"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleGravity="top"
+            app:expandedTitleGravity="bottom"
+            app:expandedTitleMarginBottom="18dp"
+            app:expandedTitleMarginStart="14dp"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
@@ -56,6 +61,7 @@
                 android:text="@string/title_cantidad_cocktail" />
 
             <TextView
+                android:id="@+id/tv_cantidad_cocktail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -72,6 +78,7 @@
                 android:text="@string/title_ingredientes_cocktail" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_ingredientes_cocktail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -83,6 +90,7 @@
                 android:text="@string/title_preparacion_cocktail" />
 
             <TextView
+                android:id="@+id/tv_preparacion_cocktail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -99,6 +107,7 @@
                 android:text="@string/title_notas_cocktail" />
 
             <TextView
+                android:id="@+id/tv_notas_cocktail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

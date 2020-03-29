@@ -26,10 +26,13 @@ class DetalleCocktailActivity : AppCompatActivity() {
 
     private fun configureUi() {
         viewModel.cocktail?.run {
+            // Imagen
             Glide.with(this@DetalleCocktailActivity)
                 .load(imagen)
                 .centerCrop()
                 .into(viewBinding.ivCocktailImage)
+
+            viewBinding.ctlDetalleCocktail.title = nombre
         }
 
     }
