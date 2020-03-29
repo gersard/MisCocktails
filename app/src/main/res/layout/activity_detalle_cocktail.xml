@@ -49,7 +49,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -69,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="14dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 tools:text="8oz|30ml" />
@@ -78,13 +77,14 @@
                 style="@style/HeaderTextViewRightCorners"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="14dp"
                 android:text="@string/title_ingredientes_cocktail" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_ingredientes_cocktail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp" />
 
             <TextView
                 style="@style/HeaderTextViewRightCorners"
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="14dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 tools:text="Mezclar en cocktelera con hielo" />
@@ -107,7 +107,7 @@
                 style="@style/HeaderTextViewRightCorners"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="14dp"
                 android:text="@string/title_notas_cocktail" />
 
             <TextView
@@ -115,7 +115,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="14dp"
+                android:alpha="0.7"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="italic"
