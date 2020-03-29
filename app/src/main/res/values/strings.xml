@@ -2,4 +2,8 @@
     <string name="app_name">MisCocktails</string>
     <string name="splash_message">SPLASH</string>
     <string name="title_cocktails">Cocktails</string>
+    <string name="title_cantidad_cocktail">Cantidad por porción</string>
+    <string name="title_ingredientes_cocktail">Ingredientes</string>
+    <string name="title_preparacion_cocktail">Preparación</string>
+    <string name="title_notas_cocktail">Notas</string>
 </resources>
