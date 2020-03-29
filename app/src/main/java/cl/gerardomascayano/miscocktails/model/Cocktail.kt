@@ -9,5 +9,7 @@ data class Cocktail(
     @SerializedName("cantidad_um")
     val cantidadUm: String = "oz",
     val imagen: String? = null,
-    val ingredientes: List<Ingrediente>? = null
+    val ingredientes: List<Ingrediente>? = null,
+    val preparacion: String = "",
+    val notas: String = ""
 )

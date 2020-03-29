@@ -33,6 +33,8 @@ class DetalleCocktailActivity : AppCompatActivity() {
                 .into(viewBinding.ivCocktailImage)
 
             viewBinding.ctlDetalleCocktail.title = nombre
+            viewBinding.tvPreparacionCocktail.text = preparacion
+            viewBinding.tvNotasCocktail.text = notas
         }
 
     }
