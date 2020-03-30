@@ -3,9 +3,11 @@ package cl.gerardomascayano.miscocktails.ui.detalle
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import cl.gerardomascayano.miscocktails.R
 import cl.gerardomascayano.miscocktails.databinding.ActivityDetalleCocktailBinding
 import cl.gerardomascayano.miscocktails.model.Cocktail
+import cl.gerardomascayano.miscocktails.ui.detalle.adapter.IngredientesAdapter
 import cl.gerardomascayano.miscocktails.ui.detalle.viewmodel.DetalleCocktailViewModel
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -35,6 +37,13 @@ class DetalleCocktailActivity : AppCompatActivity() {
             viewBinding.ctlDetalleCocktail.title = nombre
             viewBinding.tvPreparacionCocktail.text = preparacion
             viewBinding.tvNotasCocktail.text = notas
+
+            // Lista ingredientes
+            ingredientes?.let {
+                viewBinding.rvIngredientesCocktail.setHasFixedSize(true)
+                viewBinding.rvIngredientesCocktail.layoutManager = LinearLayoutManager(this@DetalleCocktailActivity)
+                viewBinding.rvIngredientesCocktail.adapter = IngredientesAdapter(ingredientes)
+            }
         }
 
     }
