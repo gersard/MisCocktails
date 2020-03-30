@@ -35,6 +35,30 @@
                 app:layout_collapseParallaxMultiplier="0.8"
                 tools:ignore="ContentDescription,UnusedAttribute" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="bottom|end">
+
+                <ImageButton
+                    android:id="@+id/ib_edit_cocktail"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_edit"
+                    tools:ignore="ContentDescription" />
+
+                <ImageButton
+                    android:id="@+id/ib_favorite_cocktail"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_heart_unfilled"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
