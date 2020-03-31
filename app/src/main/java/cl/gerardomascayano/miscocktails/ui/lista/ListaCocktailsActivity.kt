@@ -3,10 +3,15 @@ package cl.gerardomascayano.miscocktails.ui.lista
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionInflater
+import cl.gerardomascayano.miscocktails.R
 import cl.gerardomascayano.miscocktails.data.lista.ListaCocktailsRepositoryImpl
 import cl.gerardomascayano.miscocktails.model.Cocktail
 import cl.gerardomascayano.miscocktails.model.ListaCocktailsEvent
@@ -59,9 +64,14 @@ class ListaCocktailsActivity : AppCompatActivity(), ListaCocktailsAdapter.OnCock
         viewBind.rvListaCocktails.adapter = ListaCocktailsAdapter(listCocktails, this)
     }
 
-    override fun onCocktailItemClickListener(cocktail: Cocktail) {
+    override fun onCocktailItemClickListener(view: View, cocktail: Cocktail) {
         val intent = Intent(this, DetalleCocktailActivity::class.java)
         intent.putExtra("cocktail", Gson().toJson(cocktail))
-        startActivity(intent)
+        val transitionName = ViewCompat.getTransitionName(view)!!
+        intent.putExtra("transition_name", transitionName)
+
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, view, transitionName)
+
+        startActivity(intent, options.toBundle())
     }
 }
