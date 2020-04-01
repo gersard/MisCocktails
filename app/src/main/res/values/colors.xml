@@ -10,7 +10,7 @@
     
 <!--    DETALLE COCKTAIL-->
     <color name="start_gradient_detalle_image_cocktail">#80000000</color>
-    <color name="end_gradient_detalle_image_cocktail">#66FFFFFF</color>
+    <color name="end_gradient_detalle_image_cocktail">#00FFFFFF</color>
 <!--    ESTÁTICOS-->
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
