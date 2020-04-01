@@ -62,6 +62,7 @@ class DetalleCocktailActivity : AppCompatActivity() {
             viewBinding.ctlDetalleCocktail.title = nombre
             viewBinding.tvPreparacionCocktail.text = preparacion
             viewBinding.tvNotasCocktail.text = notas
+            viewBinding.tvCantidadCocktail.text = cantidad.toString() + cantidadUm
 
             // Lista ingredientes
             ingredientes?.let {
