@@ -33,7 +33,7 @@ class DetalleCocktailActivity : AppCompatActivity() {
     }
 
     private fun configureUi() {
-        val transition = TransitionInflater.from(this).inflateTransition(R.transition.custom_transition)
+//        val transition = TransitionInflater.from(this).inflateTransition(R.transition.custom_transition)
         viewBinding.ivCocktailImage.transitionName = intent.getStringExtra("transition_name")
 
 
