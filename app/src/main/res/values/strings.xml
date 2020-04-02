@@ -6,4 +6,11 @@
     <string name="title_ingredientes_cocktail">Ingredientes</string>
     <string name="title_preparacion_cocktail">Preparación</string>
     <string name="title_notas_cocktail">Notas</string>
+    <string name="title_mantenedor_añadir_cocktail">Añadir Cocktail</string>
+    <string name="title_general">General</string>
+    <string name="hint_nombre_cocktail">Nombre</string>
+    <string name="hint_preparacion_cocktail">Preparación</string>
+    <string name="title_cocktail_imagen">Imágen</string>
+    <string name="btn_tomar_foto">Tomar foto</string>
+    <string name="btn_url_imagen">Url imágen</string>
 </resources>
