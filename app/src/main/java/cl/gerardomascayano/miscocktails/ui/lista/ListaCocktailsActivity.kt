@@ -21,6 +21,7 @@ import cl.gerardomascayano.miscocktails.ui.detalle.DetalleCocktailActivity
 import cl.gerardomascayano.miscocktails.ui.lista.adapter.ListaCocktailsAdapter
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModel
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModelFactory
+import cl.gerardomascayano.miscocktails.ui.mantenedor.MantenedorCocktailActivity
 import cl.gerardomascayano.miscocktails.util.extension.exhaustive
 import cl.gerardomascayano.miscocktails.util.extension.gone
 import cl.gerardomascayano.miscocktails.util.extension.visible
@@ -46,6 +47,7 @@ class ListaCocktailsActivity : AppCompatActivity(), ListaCocktailsAdapter.OnCock
         setContentView(viewBind.root)
         listCocktailsViewModel.getCocktails()
         observeListacocktailsEvent()
+        viewBind.fabAddCocktail.setOnClickListener { startActivity(Intent(this, MantenedorCocktailActivity::class.java)) }
     }
 
     private fun observeListacocktailsEvent() {
