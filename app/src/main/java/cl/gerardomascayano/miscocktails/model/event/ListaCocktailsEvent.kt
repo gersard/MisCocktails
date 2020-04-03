@@ -1,4 +1,6 @@
-package cl.gerardomascayano.miscocktails.model
+package cl.gerardomascayano.miscocktails.model.event
+
+import cl.gerardomascayano.miscocktails.model.Cocktail
 
 sealed class ListaCocktailsEvent {
     data class Loading(val isLoading: Boolean) : ListaCocktailsEvent()

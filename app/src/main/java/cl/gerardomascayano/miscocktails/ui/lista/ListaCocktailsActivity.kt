@@ -10,11 +10,9 @@ import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.TransitionInflater
-import cl.gerardomascayano.miscocktails.R
 import cl.gerardomascayano.miscocktails.data.lista.ListaCocktailsRepositoryImpl
 import cl.gerardomascayano.miscocktails.model.Cocktail
-import cl.gerardomascayano.miscocktails.model.ListaCocktailsEvent
+import cl.gerardomascayano.miscocktails.model.event.ListaCocktailsEvent
 import cl.gerardomascayano.miscocktails.databinding.ActivityListaCocktailsBinding
 import cl.gerardomascayano.miscocktails.domain.lista.ListaCocktailsUseCaseImpl
 import cl.gerardomascayano.miscocktails.ui.detalle.DetalleCocktailActivity
