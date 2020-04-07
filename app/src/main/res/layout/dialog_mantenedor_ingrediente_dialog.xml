@@ -44,13 +44,28 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spn_unidad_medida"
+        <com.google.android.material.button.MaterialButtonToggleGroup
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginStart="24dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp" />
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_onza"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_um_oz" />
+
+            <Button
+                android:id="@+id/btn_ml"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_um_ml" />
+
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_cantidad"

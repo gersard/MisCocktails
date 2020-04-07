@@ -16,4 +16,6 @@
     <string name="hint_cantidad_ingrediente">Cantidad</string>
     <string name="btn_anadir">Añadir</string>
     <string name="btn_cancelar">Cancelar</string>
+    <string name="txt_um_oz">Oz</string>
+    <string name="txt_um_ml">Ml</string>
 </resources>
