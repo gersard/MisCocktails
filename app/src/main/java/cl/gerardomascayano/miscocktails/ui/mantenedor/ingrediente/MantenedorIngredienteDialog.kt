@@ -9,14 +9,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import cl.gerardomascayano.miscocktails.databinding.DialogMantenedorIngredienteDialogBinding
+import cl.gerardomascayano.miscocktails.domain.mantenedor.ingrediente.MantenedorIngredienteUseCaseImpl
 import cl.gerardomascayano.miscocktails.ui.mantenedor.common.IngredienteCallback
+import cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.viewmodel.MantenedorIngredienteViewModel
+import cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.viewmodel.MantenedorIngredienteViewModelFactory
 
 class MantenedorIngredienteDialog : DialogFragment() {
 
     private var _viewBinding: DialogMantenedorIngredienteDialogBinding? = null
     private val viewBinding get() = _viewBinding!!
     private var ingredienteListener: IngredienteCallback? = null
+    private val viewModel by lazy {
+        ViewModelProvider(this, MantenedorIngredienteViewModelFactory(MantenedorIngredienteUseCaseImpl())).get(
+            MantenedorIngredienteViewModel::class.java
+        )
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

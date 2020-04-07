@@ -1,4 +1,8 @@
 package cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.viewmodel
 
-class MantenedorIngredienteViewModel {
+import androidx.lifecycle.ViewModel
+import cl.gerardomascayano.miscocktails.domain.mantenedor.ingrediente.MantenedorIngredienteUseCase
+
+class MantenedorIngredienteViewModel(private val useCase: MantenedorIngredienteUseCase) : ViewModel() {
+
 }
