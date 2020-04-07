@@ -8,6 +8,7 @@ import cl.gerardomascayano.miscocktails.databinding.ActivityMantenedorCocktailBi
 import cl.gerardomascayano.miscocktails.domain.mantenedor.MantenedorCocktailUseCaseImpl
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModel
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModelFactory
+import cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.MantenedorIngredienteDialog
 
 class MantenedorCocktailActivity : AppCompatActivity() {
 
@@ -29,6 +30,6 @@ class MantenedorCocktailActivity : AppCompatActivity() {
     }
 
     private fun showIngredientDialog() {
-
+        MantenedorIngredienteDialog.newInstance().show(supportFragmentManager, "")
     }
 }
