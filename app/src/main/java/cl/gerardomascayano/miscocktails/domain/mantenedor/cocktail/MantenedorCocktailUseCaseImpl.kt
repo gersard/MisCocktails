@@ -1,4 +1,4 @@
-package cl.gerardomascayano.miscocktails.domain.mantenedor
+package cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail
 
 import android.annotation.SuppressLint
 import android.text.TextUtils
@@ -6,7 +6,8 @@ import android.util.Patterns
 import cl.gerardomascayano.miscocktails.data.mantenedor.MantenedorCocktailRepository
 import cl.gerardomascayano.miscocktails.model.Ingrediente
 
-class MantenedorCocktailUseCaseImpl(val repository: MantenedorCocktailRepository) : MantenedorCocktailUseCase {
+class MantenedorCocktailUseCaseImpl(val repository: MantenedorCocktailRepository) :
+    MantenedorCocktailUseCase {
 
     override fun validateNombre(nombre: String?): Boolean = !TextUtils.isEmpty(nombre)
 

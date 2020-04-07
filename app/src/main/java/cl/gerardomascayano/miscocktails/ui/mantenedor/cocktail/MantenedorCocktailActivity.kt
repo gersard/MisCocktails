@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import cl.gerardomascayano.miscocktails.data.mantenedor.MantenedorCocktailRepositoryImpl
 import cl.gerardomascayano.miscocktails.databinding.ActivityMantenedorCocktailBinding
-import cl.gerardomascayano.miscocktails.domain.mantenedor.MantenedorCocktailUseCaseImpl
+import cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail.MantenedorCocktailUseCaseImpl
 import cl.gerardomascayano.miscocktails.model.Ingrediente
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModel
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModelFactory
@@ -19,7 +19,9 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
         ViewModelProvider(
             this,
             MantenedorCocktailViewModelFactory(
-                MantenedorCocktailUseCaseImpl(MantenedorCocktailRepositoryImpl())
+                MantenedorCocktailUseCaseImpl(
+                    MantenedorCocktailRepositoryImpl()
+                )
             )
         ).get(MantenedorCocktailViewModel::class.java)
     }

@@ -1,4 +1,4 @@
-package cl.gerardomascayano.miscocktails.domain.mantenedor
+package cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail
 
 import cl.gerardomascayano.miscocktails.model.Ingrediente
 

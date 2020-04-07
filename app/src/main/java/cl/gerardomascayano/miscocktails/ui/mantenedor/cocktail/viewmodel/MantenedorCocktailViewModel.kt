@@ -3,7 +3,7 @@ package cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import cl.gerardomascayano.miscocktails.domain.mantenedor.MantenedorCocktailUseCase
+import cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail.MantenedorCocktailUseCase
 import cl.gerardomascayano.miscocktails.model.Ingrediente
 import cl.gerardomascayano.miscocktails.model.event.MantenedorCocktailEvent
 

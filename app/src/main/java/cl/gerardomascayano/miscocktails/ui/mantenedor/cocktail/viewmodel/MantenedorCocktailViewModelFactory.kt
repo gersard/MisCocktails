@@ -2,7 +2,7 @@ package cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import cl.gerardomascayano.miscocktails.domain.mantenedor.MantenedorCocktailUseCase
+import cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail.MantenedorCocktailUseCase
 
 class MantenedorCocktailViewModelFactory(private val useCase: MantenedorCocktailUseCase) :
     ViewModelProvider.Factory {
