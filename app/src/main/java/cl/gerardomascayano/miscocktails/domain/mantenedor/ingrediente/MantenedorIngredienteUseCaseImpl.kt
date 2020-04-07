@@ -13,6 +13,6 @@ class MantenedorIngredienteUseCaseImpl : MantenedorIngredienteUseCase {
         return true
     }
     @SuppressLint("DefaultLocale")
-    override fun formatNombre(nombre: String): String = nombre.capitalize()
-    override fun formatCantidad(cantidad: String): Float = cantidad.toFloat()
+    override fun formatNombre(nombre: String?): String = nombre!!.capitalize()
+    override fun formatCantidad(cantidad: String?): Int = cantidad!!.toInt()
 }

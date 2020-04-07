@@ -8,13 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import cl.gerardomascayano.miscocktails.R
 import cl.gerardomascayano.miscocktails.databinding.DialogMantenedorIngredienteDialogBinding
 import cl.gerardomascayano.miscocktails.domain.mantenedor.ingrediente.MantenedorIngredienteUseCaseImpl
+import cl.gerardomascayano.miscocktails.model.event.MantenedorIngredienteEvent
 import cl.gerardomascayano.miscocktails.ui.mantenedor.common.IngredienteCallback
 import cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.viewmodel.MantenedorIngredienteViewModel
 import cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.viewmodel.MantenedorIngredienteViewModelFactory
+import cl.gerardomascayano.miscocktails.util.extension.exhaustive
 
 class MantenedorIngredienteDialog : DialogFragment() {
 
@@ -42,12 +47,34 @@ class MantenedorIngredienteDialog : DialogFragment() {
         _viewBinding = DialogMantenedorIngredienteDialogBinding.inflate(inflater, container, false)
         viewBinding.btnCancelar.setOnClickListener { dismiss() }
         viewBinding.btnAnadir.setOnClickListener { anadirIngrediente() }
+        observeEvent()
         return viewBinding.root
     }
 
-    private fun anadirIngrediente() {
-
+    private fun observeEvent() {
+        viewModel.mantenedorIngredienteEvent.observe(viewLifecycleOwner, Observer { event ->
+            when (event) {
+                is MantenedorIngredienteEvent.Loading -> return@Observer
+                is MantenedorIngredienteEvent.Success -> ingredienteListener?.ingredienteAdded(event.ingrediente)
+                is MantenedorIngredienteEvent.Failure -> Toast.makeText(context, event.message, Toast.LENGTH_LONG).show()
+            }.exhaustive
+        })
     }
+
+    private fun anadirIngrediente() {
+        viewModel.saveIngrediente(
+            viewBinding.tilNombre.editText?.text.toString(),
+            getTextButtonToggleSelected(),
+            viewBinding.tilCantidad.editText?.text.toString()
+        )
+    }
+
+    private fun getTextButtonToggleSelected(): String? =
+        when (viewBinding.mtgCantidadUm.checkedButtonId) {
+            R.id.btn_onza -> viewBinding.btnOnza.text.toString()
+            R.id.btn_ml -> viewBinding.btnMl.text.toString()
+            else -> null
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
