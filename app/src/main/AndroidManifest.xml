@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.mantenedor.MantenedorCocktailActivity">
+        <activity android:name=".ui.mantenedor.cocktail.MantenedorCocktailActivity">
         </activity>
         <activity android:name=".ui.detalle.DetalleCocktailActivity" />
         <activity android:name=".ui.splash.SplashActivity">

@@ -13,4 +13,7 @@
     <string name="title_cocktail_imagen">Imágen</string>
     <string name="btn_tomar_foto">Tomar foto</string>
     <string name="btn_url_imagen">Url imágen</string>
+    <string name="hint_cantidad_ingrediente">Cantidad</string>
+    <string name="btn_anadir">Añadir</string>
+    <string name="btn_cancelar">Cancelar</string>
 </resources>

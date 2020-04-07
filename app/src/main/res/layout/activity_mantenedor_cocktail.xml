@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="24dp"
-    tools:context=".ui.mantenedor.MantenedorCocktailActivity">
+    tools:context=".ui.mantenedor.cocktail.MantenedorCocktailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -121,13 +121,15 @@
 
         <ImageButton
             android:id="@+id/ib_add_ingrediente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_marginStart="32dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="@+id/textView4"
-            app:srcCompat="@drawable/ic_heart_filled"
+            app:srcCompat="@drawable/ic_circle_plus"
             tools:ignore="ContentDescription" />
 
         <androidx.recyclerview.widget.RecyclerView

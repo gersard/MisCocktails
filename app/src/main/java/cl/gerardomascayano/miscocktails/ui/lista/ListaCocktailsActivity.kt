@@ -19,7 +19,7 @@ import cl.gerardomascayano.miscocktails.ui.detalle.DetalleCocktailActivity
 import cl.gerardomascayano.miscocktails.ui.lista.adapter.ListaCocktailsAdapter
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModel
 import cl.gerardomascayano.miscocktails.ui.lista.viewmodel.ListaCocktailsViewModelFactory
-import cl.gerardomascayano.miscocktails.ui.mantenedor.MantenedorCocktailActivity
+import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.MantenedorCocktailActivity
 import cl.gerardomascayano.miscocktails.util.extension.exhaustive
 import cl.gerardomascayano.miscocktails.util.extension.gone
 import cl.gerardomascayano.miscocktails.util.extension.visible
