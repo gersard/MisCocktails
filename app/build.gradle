@@ -81,7 +81,7 @@ dependencies {
 
     // CÁMARA
     def cameraView = '2.6.2'
-    implementation "com.otaliastudios:cameraview:2.6.2"
+    implementation "com.otaliastudios:cameraview:$cameraView"
 
     // LOG
     def timber = '4.7.1'
