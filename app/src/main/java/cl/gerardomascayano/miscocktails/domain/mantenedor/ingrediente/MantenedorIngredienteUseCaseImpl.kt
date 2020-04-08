@@ -8,8 +8,8 @@ class MantenedorIngredienteUseCaseImpl : MantenedorIngredienteUseCase {
     override fun validarUnidadMedida(um: String?): Boolean = !TextUtils.isEmpty(um)
 
     override fun validarCantidad(cantidad: String?): Boolean {
-        if (!TextUtils.isEmpty(cantidad)) return false
-        if ((cantidad!!.toFloat()) < 0) return false
+        if (TextUtils.isEmpty(cantidad)) return false
+        if ((cantidad!!.toInt()) < 0) return false
         return true
     }
     @SuppressLint("DefaultLocale")

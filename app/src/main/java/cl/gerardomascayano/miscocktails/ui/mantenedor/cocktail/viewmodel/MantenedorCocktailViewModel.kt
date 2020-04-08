@@ -9,6 +9,7 @@ import cl.gerardomascayano.miscocktails.model.event.MantenedorCocktailEvent
 
 class MantenedorCocktailViewModel(private val useCase: MantenedorCocktailUseCase) : ViewModel() {
 
+    var ingredientes = mutableListOf<Ingrediente>()
     private var _mantenedorCocktailEvent = MutableLiveData<MantenedorCocktailEvent>()
     val mantenedorCocktailEvent: LiveData<MantenedorCocktailEvent>
         get() = _mantenedorCocktailEvent
@@ -27,6 +28,10 @@ class MantenedorCocktailViewModel(private val useCase: MantenedorCocktailUseCase
             _mantenedorCocktailEvent.value = MantenedorCocktailEvent.Failure("Debes tomar una fotografía o ingresar su url")
             return
         }
+    }
+
+    fun addIngrediente(ingrediente: Ingrediente) {
+        ingredientes.add(0, ingrediente)
     }
 
 }

@@ -3,10 +3,12 @@ package cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import cl.gerardomascayano.miscocktails.data.mantenedor.MantenedorCocktailRepositoryImpl
 import cl.gerardomascayano.miscocktails.databinding.ActivityMantenedorCocktailBinding
 import cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail.MantenedorCocktailUseCaseImpl
 import cl.gerardomascayano.miscocktails.model.Ingrediente
+import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.adapter.IngredienteMantenedorAdapter
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModel
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModelFactory
 import cl.gerardomascayano.miscocktails.ui.mantenedor.common.IngredienteCallback
@@ -31,6 +33,13 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
         viewBinding = ActivityMantenedorCocktailBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
         viewBinding.ibAddIngrediente.setOnClickListener { showIngredientDialog() }
+        configureRecyclerView()
+    }
+
+    private fun configureRecyclerView() {
+        viewBinding.rvIngredientes.setHasFixedSize(true)
+        viewBinding.rvIngredientes.layoutManager = LinearLayoutManager(this)
+        viewBinding.rvIngredientes.adapter = IngredienteMantenedorAdapter(viewModel.ingredientes)
     }
 
     private fun showIngredientDialog() {
@@ -38,6 +47,7 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
     }
 
     override fun ingredienteAdded(ingrediente: Ingrediente) {
-
+        viewModel.addIngrediente(ingrediente)
+        viewBinding.rvIngredientes.adapter?.notifyItemInserted(0)
     }
 }
