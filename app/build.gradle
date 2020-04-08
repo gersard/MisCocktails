@@ -68,9 +68,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
     //FIREBASE
-    def firAnalytics = '17.2.3'
+    def firAnalytics = '17.3.0'
     def firAuth = '19.3.0'
-    def firFirestore = '21.4.1'
+    def firFirestore = '21.4.2'
     implementation "com.google.firebase:firebase-analytics:$firAnalytics"
     implementation "com.google.firebase:firebase-firestore:$firFirestore"
     implementation "com.google.firebase:firebase-auth:$firAuth"
@@ -78,6 +78,10 @@ dependencies {
     // IMÁGENES
     def glide = '4.11.0'
     implementation "com.github.bumptech.glide:glide:$glide"
+
+    // CÁMARA
+    def cameraView = '2.6.2'
+    implementation "com.otaliastudios:cameraview:2.6.2"
 
     // LOG
     def timber = '4.7.1'
