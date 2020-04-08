@@ -1,8 +1,11 @@
 package cl.gerardomascayano.miscocktails.ui.camera
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import cl.gerardomascayano.miscocktails.R
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import cl.gerardomascayano.miscocktails.databinding.ActivityCameraBinding
 import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.PictureResult
@@ -29,8 +32,30 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun takePicture() {
-        viewBinding.viewCamera.takePicture()
+        if (isPermissionGranted()) {
+            viewBinding.viewCamera.takePicture()
+        } else {
+            requestPermission()
+        }
     }
 
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission_group.STORAGE, Manifest.permission_group.CAMERA), REQUEST_PERMISSION)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_PERMISSION){
+
+        }
+    }
+
+    private fun isPermissionGranted(): Boolean =
+        ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission_group.CAMERA) == PackageManager.PERMISSION_GRANTED
+
+    companion object {
+        const val REQUEST_PERMISSION = 100
+    }
 
 }

@@ -1,5 +1,6 @@
 package cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -8,6 +9,7 @@ import cl.gerardomascayano.miscocktails.data.mantenedor.MantenedorCocktailReposi
 import cl.gerardomascayano.miscocktails.databinding.ActivityMantenedorCocktailBinding
 import cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail.MantenedorCocktailUseCaseImpl
 import cl.gerardomascayano.miscocktails.model.Ingrediente
+import cl.gerardomascayano.miscocktails.ui.camera.CameraActivity
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.adapter.IngredienteMantenedorAdapter
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModel
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModelFactory
@@ -33,7 +35,12 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
         viewBinding = ActivityMantenedorCocktailBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
         viewBinding.ibAddIngrediente.setOnClickListener { showIngredientDialog() }
+        viewBinding.btnTomarFoto.setOnClickListener { showCamera() }
         configureRecyclerView()
+    }
+
+    private fun showCamera() {
+        startActivity(Intent(this, CameraActivity::class.java))
     }
 
     private fun configureRecyclerView() {
