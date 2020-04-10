@@ -1,6 +1,10 @@
 package cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +19,12 @@ import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.Mantene
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModelFactory
 import cl.gerardomascayano.miscocktails.ui.mantenedor.common.IngredienteCallback
 import cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.MantenedorIngredienteDialog
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import timber.log.Timber
 
 class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
 
@@ -40,7 +50,7 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
     }
 
     private fun showCamera() {
-        startActivity(Intent(this, CameraActivity::class.java))
+        startActivityForResult(Intent(this, CameraActivity::class.java), CameraActivity.REQUEST_CODE_PHOTO)
     }
 
     private fun configureRecyclerView() {
@@ -57,4 +67,34 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
         viewModel.addIngrediente(ingrediente)
         viewBinding.rvIngredientes.adapter?.notifyItemInserted(0)
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CameraActivity.REQUEST_CODE_PHOTO) {
+            data?.let {
+                val uri = Uri.parse(it.getStringExtra(CameraActivity.RESULT_URI))
+                Glide.with(this)
+                    .load(uri)
+                    .addListener(object : RequestListener<Drawable> {
+                        override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+                            Timber.e(e)
+                            return false
+                        }
+
+                        override fun onResourceReady(
+                            resource: Drawable?,
+                            model: Any?,
+                            target: Target<Drawable>?,
+                            dataSource: DataSource?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            return false
+                        }
+
+                    })
+                    .into(viewBinding.ivFoto)
+            }
+        }
+    }
+
 }

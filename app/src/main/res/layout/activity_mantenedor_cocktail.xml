@@ -188,5 +188,6 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_tomar_foto"
             app:srcCompat="@drawable/common_google_signin_btn_icon_light"
             tools:ignore="ContentDescription" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

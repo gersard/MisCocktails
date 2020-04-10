@@ -17,11 +17,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import cl.gerardomascayano.miscocktails.databinding.ActivityCameraBinding
+import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.MantenedorCocktailActivity
 import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.PictureResult
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import java.util.*
 
 class CameraActivity : AppCompatActivity() {
 
@@ -54,7 +56,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun takePicture() {
-        if (!isPermissionGranted()) {
+        if (isPermissionGranted()) {
             viewBinding.viewCamera.takePicture()
         } else {
             requestPermission()
@@ -73,31 +75,47 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun isPermissionGranted(): Boolean =
-        ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) == PackageManager.PERMISSION_GRANTED &&
+        ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
 
     private fun saveImage(bitmap: Bitmap) {
         val fos: OutputStream?
+        val uri: Uri?
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val contentValues = ContentValues()
-            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "fotoprueba.jpeg")
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "${UUID.randomUUID()}.jpeg")
             contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
             contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
             val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
             fos = contentResolver.openOutputStream(imageUri!!)
+            uri = imageUri
         } else {
             val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()
-            val imageFile = File(dir, "fotoprueba.jpeg")
+            val imageFile = File(dir, "${UUID.randomUUID()}.jpeg")
             fos = FileOutputStream(imageFile)
             viewModel.scanFile(this, imageFile)
-
+            uri = Uri.fromFile(imageFile)
         }
         bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos)
+        fos?.flush()
+        fos?.close()
+        finishScreen(uri)
+    }
+
+    private fun finishScreen(uri: Uri?) {
+        val intent = Intent()
+        intent.putExtra(RESULT_URI, uri?.toString())
+        setResult(REQUEST_CODE_PHOTO, intent)
+        finish()
     }
 
     companion object {
         const val REQUEST_PERMISSION = 100
+
+        const val REQUEST_CODE_PHOTO = 1
+        const val RESULT_URI = "result_uri"
+
     }
 
 }
