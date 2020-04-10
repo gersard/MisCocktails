@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import cl.gerardomascayano.miscocktails.databinding.ActivityCameraBinding
 import com.otaliastudios.cameraview.CameraListener
@@ -91,6 +90,8 @@ class CameraActivity : AppCompatActivity() {
             val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()
             val imageFile = File(dir, "fotoprueba.jpeg")
             fos = FileOutputStream(imageFile)
+            viewModel.scanFile(this, imageFile)
+
         }
         bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos)
     }
