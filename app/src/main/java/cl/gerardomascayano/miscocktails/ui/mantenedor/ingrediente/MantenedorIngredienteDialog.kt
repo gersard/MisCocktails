@@ -55,7 +55,10 @@ class MantenedorIngredienteDialog : DialogFragment() {
         viewModel.mantenedorIngredienteEvent.observe(viewLifecycleOwner, Observer { event ->
             when (event) {
                 is MantenedorIngredienteEvent.Loading -> return@Observer
-                is MantenedorIngredienteEvent.Success -> ingredienteListener?.ingredienteAdded(event.ingrediente)
+                is MantenedorIngredienteEvent.Success -> {
+                    ingredienteListener?.ingredienteAdded(event.ingrediente)
+                    dismiss()
+                }
                 is MantenedorIngredienteEvent.Failure -> Toast.makeText(context, event.message, Toast.LENGTH_LONG).show()
             }.exhaustive
         })
