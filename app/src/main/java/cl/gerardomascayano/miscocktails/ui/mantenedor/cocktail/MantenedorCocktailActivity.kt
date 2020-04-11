@@ -75,6 +75,7 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
                 val uri = Uri.parse(it.getStringExtra(CameraActivity.RESULT_URI))
                 Glide.with(this)
                     .load(uri)
+                    .centerCrop()
                     .into(viewBinding.ivFoto)
             }
         }

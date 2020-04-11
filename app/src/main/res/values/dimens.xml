@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="corner_radius_high">10dp</dimen>
+    <dimen name="corner_radius_medium">6dp</dimen>
+
 </resources>
