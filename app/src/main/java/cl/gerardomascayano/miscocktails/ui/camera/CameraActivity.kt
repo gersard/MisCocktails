@@ -20,6 +20,10 @@ import cl.gerardomascayano.miscocktails.databinding.ActivityCameraBinding
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.MantenedorCocktailActivity
 import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.PictureResult
+import com.otaliastudios.cameraview.controls.Flash
+import com.otaliastudios.cameraview.size.Size
+import com.otaliastudios.cameraview.size.SizeSelector
+import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -36,8 +40,25 @@ class CameraActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
         viewBinding.viewCamera.setLifecycleOwner(this)
         viewBinding.ibTakePicture.setOnClickListener { takePicture() }
+        viewBinding.ibFlash.setOnClickListener { handleFlash() }
         listenPictureTaking()
         observeImageResult()
+        configPictureSize()
+    }
+
+    private fun handleFlash() {
+        if (viewBinding.viewCamera.flash == Flash.OFF) {
+            viewBinding.viewCamera.flash = Flash.ON
+        } else {
+            viewBinding.viewCamera.flash = Flash.OFF
+        }
+    }
+
+    private fun configPictureSize() {
+        viewBinding.viewCamera.setPictureSize { source ->
+            source.forEach { Timber.d("Size: ${it.width}x${it.height}") }
+            source
+        }
     }
 
     private fun observeImageResult() {
@@ -91,7 +112,8 @@ class CameraActivity : AppCompatActivity() {
             fos = contentResolver.openOutputStream(imageUri!!)
             uri = imageUri
         } else {
-            val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()
+            val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            if (!dir.exists()) dir.mkdir()
             val imageFile = File(dir, "${UUID.randomUUID()}.jpeg")
             fos = FileOutputStream(imageFile)
             viewModel.scanFile(this, imageFile)
