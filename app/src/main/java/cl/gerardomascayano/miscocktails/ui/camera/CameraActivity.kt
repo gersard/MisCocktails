@@ -16,6 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import cl.gerardomascayano.miscocktails.R
 import cl.gerardomascayano.miscocktails.databinding.ActivityCameraBinding
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.MantenedorCocktailActivity
 import com.otaliastudios.cameraview.CameraListener
@@ -47,10 +48,23 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun handleFlash() {
-        if (viewBinding.viewCamera.flash == Flash.OFF) {
-            viewBinding.viewCamera.flash = Flash.ON
-        } else {
-            viewBinding.viewCamera.flash = Flash.OFF
+        viewBinding.viewCamera.flash = when (viewBinding.viewCamera.flash) {
+            Flash.ON -> {
+                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_disabled))
+                Flash.OFF
+            }
+            Flash.OFF -> {
+                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_automatic))
+                Flash.TORCH
+            }
+            Flash.AUTO -> {
+                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_torch))
+                Flash.TORCH
+            }
+            Flash.TORCH -> {
+                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_torch))
+                Flash.ON
+            }
         }
     }
 

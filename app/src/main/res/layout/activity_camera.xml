@@ -28,7 +28,7 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="@android:color/transparent"
-            android:src="@android:drawable/alert_light_frame"
+            android:src="@drawable/ic_flash_disabled"
             tools:ignore="ContentDescription" />
 
         <Space
