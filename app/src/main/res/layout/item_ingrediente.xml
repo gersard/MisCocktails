@@ -13,7 +13,7 @@
         android:id="@+id/tv_cantidad_ingrediente_cocktail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color_primary"
         android:textSize="18sp"
         tools:text="3oz" />
 
@@ -25,7 +25,7 @@
         android:id="@+id/tv_nombre_ingrediente_cocktail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color_primary"
         android:textSize="18sp"
         tools:text="Ron de coco" />
 

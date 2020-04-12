@@ -30,6 +30,10 @@ class MantenedorCocktailViewModel(private val useCase: MantenedorCocktailUseCase
         }
     }
 
+    fun btnGuardarClicked(nombre: String, ingredientes: List<Ingrediente>, urlImagen: String?){
+
+    }
+
     fun addIngrediente(ingrediente: Ingrediente) {
         ingredientes.add(0, ingrediente)
     }

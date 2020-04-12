@@ -17,7 +17,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/bg_full_corners"
+            android:background="@drawable/bg_full_corners_high"
             android:backgroundTint="@color/colorAccent"
             android:gravity="center"
             android:paddingStart="30dp"
@@ -158,6 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/btn_tomar_foto"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/btn_url_imagen"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -168,6 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_url_imagen"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -188,6 +190,17 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_tomar_foto"
             app:srcCompat="@drawable/common_google_signin_btn_icon_light"
             tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/btn_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/btn_guardar"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_foto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

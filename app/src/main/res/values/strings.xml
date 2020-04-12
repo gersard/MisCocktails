@@ -18,4 +18,5 @@
     <string name="btn_cancelar">Cancelar</string>
     <string name="txt_um_oz">Oz</string>
     <string name="txt_um_ml">Ml</string>
+    <string name="btn_guardar">Guardar</string>
 </resources>

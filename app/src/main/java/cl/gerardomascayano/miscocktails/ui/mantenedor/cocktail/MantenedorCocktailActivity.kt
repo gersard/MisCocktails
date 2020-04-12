@@ -7,18 +7,22 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import cl.gerardomascayano.miscocktails.data.mantenedor.MantenedorCocktailRepositoryImpl
 import cl.gerardomascayano.miscocktails.databinding.ActivityMantenedorCocktailBinding
 import cl.gerardomascayano.miscocktails.domain.mantenedor.cocktail.MantenedorCocktailUseCaseImpl
 import cl.gerardomascayano.miscocktails.model.Ingrediente
+import cl.gerardomascayano.miscocktails.model.event.MantenedorCocktailEvent
 import cl.gerardomascayano.miscocktails.ui.camera.CameraActivity
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.adapter.IngredienteMantenedorAdapter
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModel
 import cl.gerardomascayano.miscocktails.ui.mantenedor.cocktail.viewmodel.MantenedorCocktailViewModelFactory
 import cl.gerardomascayano.miscocktails.ui.mantenedor.common.IngredienteCallback
 import cl.gerardomascayano.miscocktails.ui.mantenedor.ingrediente.MantenedorIngredienteDialog
+import cl.gerardomascayano.miscocktails.util.extension.exhaustive
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -46,7 +50,19 @@ class MantenedorCocktailActivity : AppCompatActivity(), IngredienteCallback {
         setContentView(viewBinding.root)
         viewBinding.ibAddIngrediente.setOnClickListener { showIngredientDialog() }
         viewBinding.btnTomarFoto.setOnClickListener { showCamera() }
+        viewBinding.btnGuardar.setOnClickListener { viewModel.btnGuardarClicked(viewBinding.tilNombre.editText.toString(), listOf(),null) }
         configureRecyclerView()
+        observeEvent()
+    }
+
+    private fun observeEvent() {
+        viewModel.mantenedorCocktailEvent.observe(this, Observer { event ->
+            when (event) {
+                is MantenedorCocktailEvent.Loading -> TODO()
+                MantenedorCocktailEvent.Success -> Toast.makeText(this, "Cocktail registrado exitósamente", Toast.LENGTH_SHORT).show()
+                is MantenedorCocktailEvent.Failure -> Toast.makeText(this, event.message, Toast.LENGTH_LONG).show()
+            }.exhaustive
+        })
     }
 
     private fun showCamera() {
