@@ -54,7 +54,7 @@ class CameraActivity : AppCompatActivity() {
                 Flash.OFF
             }
             Flash.OFF -> {
-                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_automatic))
+                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_torch))
                 Flash.TORCH
             }
             Flash.AUTO -> {
@@ -62,7 +62,7 @@ class CameraActivity : AppCompatActivity() {
                 Flash.TORCH
             }
             Flash.TORCH -> {
-                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_torch))
+                viewBinding.ibFlash.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_flash_automatic))
                 Flash.ON
             }
         }
